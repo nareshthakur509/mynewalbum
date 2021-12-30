@@ -1,0 +1,29 @@
+
+<%= form_with model: @album  do |form| %>
+  <div>
+        <%= form.label :name %><br>
+        <%= form.text_field :name %>
+        <% @album.errors.full_messages_for(:name).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+  </div>
+
+  <div>
+        <%= form.label :description %><br>
+        <%= form.text_area :description %>
+        <% @album.errors.full_messages_for(:description).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+  </div>
+
+  <div>
+        
+        <%= form.number_field :user_id, id: :album_user_id , value: current_user.id ,type: :hidden%>
+        <% @album.errors.full_messages_for(:user_id).each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+  </div><hr>
+  <div>
+    <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>

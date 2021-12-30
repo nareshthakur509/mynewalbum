@@ -1,0 +1,61 @@
+<h4><%= @album.name %></h4>
+<div class="bg-light p-4">
+
+
+<div class="row">
+ <div class="col-12">
+ <%= @album.description %>
+ </div>
+
+<div class="col-12 d-flex justify-content-end">
+<%= link_to "Edit", edit_album_path(@album) ,class:"btn btn-primary p-2" %></li>
+<%= link_to "Delete", album_path(@album),class:"btn btn-dark ms-2" ,
+                   :method => :delete,data: { confirm: "Are you sure?" }  %></li>
+</div>
+
+</div>
+
+
+
+</div>
+
+
+  <%= form_with url: album_photos_path(album_id: @album.id)  do |form| %>
+
+  <div class= "row bg-dark bd-dark text-white rounded-3 p-2">
+    <h4>Add a Photo</h4>
+    <hr>
+  <div class="col-12 mt-1 w-50">
+          <%= form.file_field :photo %>
+          </div>
+         <div class= "col-12 mt-2">
+          <%= form.label :"Name" %><br />
+          <%= form.text_field :name %></div>
+
+          <div class= "col-12 mt-2">
+          <%= form.label :"Add Tags" %><br />
+          <%= form.text_field :all_tags%></div> 
+          <div class= "col-12 mt-2">
+          <%= form.submit class: ' btn-primary rounded-3' %></div>
+          </div>
+  <% end %>
+
+
+
+<div class="container p-3 rounded-3">
+<h2 class="col-12 d-flex justify-content-center">Photos<h2>
+
+<% @album.photos.each do |photo| %>
+      <p>
+        <%= image_tag(photo.photos)%>
+      </p>
+
+      <h5>Photo:<%= photo.name%></h5>
+      <h6>Tags: <%= photo.all_tags%></h5>  
+      <h5>
+        <%= link_to "Delete",album_photo_path(photo), class:"btn btn-dark",  :method => :delete,data: { confirm: "Are you sure?" } %>
+      </h5> 
+<% end %>
+<hr>
+</div>
+

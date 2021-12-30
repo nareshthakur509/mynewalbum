@@ -1,0 +1,23 @@
+
+<h1>Albums</h1>
+<div class="containers text-white p-2 rounded-3">
+  
+      <% @albums.each do |album| %>
+      <% if album.user == current_user %>
+<table class="table table-hover">
+
+  <tbody>
+
+    <tr>
+
+      <td class="col-9"><%= album.name%></td>
+      <td><%= link_to "Show", album_path(album)%></td>
+      <td><%= link_to "Edit", edit_album_path(album)%></td>
+      <td><%= link_to "Delete Album" , album_path(album),  :method => :delete,data: { confirm: "Are you sure?" } %></td>
+<tr>
+
+</tbody>
+</table>
+
+  <% end %>
+    <% end %>

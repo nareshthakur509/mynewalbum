@@ -1,0 +1,12 @@
+<div class="fw-bold "><h4> Welcome<h4> </div>
+<% name = current_user.present? ? current_user.email : '' %>
+
+<h3><%=  name %></h3>
+<div class="container">
+    <% if current_user.present? %>
+            <h2>
+                <%= link_to "Go Add Some Albums", albums_path , class:"btn btn-primary"%>
+            </h2>
+        </div>
+    <% end %>
+</div>
