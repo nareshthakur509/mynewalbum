@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+    # Devise::Test::ControllerHelpers
   def new
       @photo = Photo.new
   end
